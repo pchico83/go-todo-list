@@ -19,4 +19,4 @@ jobs:
     - name: Delete namespace
       uses: okteto/delete-namespace@master
       with:
-        namespace: pr-${{ github.event.number }}-pchico83
+        namespace: go-todo-list-pr-${{ github.event.number }}-pchico83

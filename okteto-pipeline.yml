@@ -1,4 +1,6 @@
 deploy:
+  - kubectl apply -f manifest/postgres.yaml
   - okteto build -t okteto.dev/todo-list:${OKTETO_GIT_COMMIT}
+  - ./wait-for-it.sh db.${OKTETO_NAMESPACE}:5432 -t 120
   - cd manifest; kustomize edit set image okteto.dev/todo-list=okteto.dev/todo-list:${OKTETO_GIT_COMMIT}
   - kubectl apply -k manifest

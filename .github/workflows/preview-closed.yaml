@@ -14,9 +14,10 @@ jobs:
     - name: Login
       uses: okteto/login@master
       with:
+        url: https://okteto.gymshark.dev.okteto.net
         token: ${{ secrets.OKTETO_TOKEN }}
     
     - name: Delete namespace
       uses: okteto/delete-namespace@master
       with:
-        namespace: go-todo-list-pr-${{ github.event.number }}-pchico83
+        namespace: go-todo-list-pr-${{ github.event.number }}

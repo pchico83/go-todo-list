@@ -13,22 +13,23 @@ jobs:
     - name: Login
       uses: okteto/login@master
       with:
+        url: https://okteto.gymshark.dev.okteto.net
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: Create namespace
       uses: okteto/create-namespace@master
       with:
-        namespace: go-todo-list-pr-${{ github.event.number }}-pchico83
+        namespace: go-todo-list-pr-${{ github.event.number }}
 
     - name: Deploy Pipeline
       uses: okteto/pipeline@master
       with:
         name: go-todo-list
-        namespace: go-todo-list-pr-${{ github.event.number }}-pchico83
+        namespace: go-todo-list-pr-${{ github.event.number }}
 
     - name: comment PR
       uses: unsplash/comment-on-pr@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        msg: "Preview environment available at https://todo-list-go-todo-list-pr-${{ github.event.number }}-pchico83.cloud.okteto.net"
+        msg: "Preview environment available at https://todo-list-go-todo-list-pr-${{ github.event.number }}.gymshark.dev.okteto.net"

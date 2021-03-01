@@ -75,7 +75,7 @@ func getItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	sort.Slice(all, func(i, j int) bool {
-		return all[i].Task > all[j].Task
+		return all[i].Task < all[j].Task
 	})
 
 	w.Header().Set("Content-Type", "application/json")
